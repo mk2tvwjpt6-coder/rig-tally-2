@@ -38,3 +38,7 @@ This first version stores one job in this browser's local storage. Backups prese
 The server binds to localhost by default and keeps the key on the server. Before internet hosting, add authenticated access, per-user quotas and shared storage. The current global two-scan concurrency limit is not an authentication or distributed rate-limit system. Photo inputs are transmitted to OpenAI; `store:false` is set on Responses requests. Never deploy this endpoint as an unrestricted public service.
 
 Next work: real-photo evaluations, perspective/cell alignment for the universal sheet, stronger capture checks, then shared jobs and additional tool/KB/weight calculations.
+
+## Hosted build
+
+`npm run build:hosted` emits a self-contained Cloudflare Worker in `dist/server/index.js`, serving the same frontend and recognition logic as the local app. Configure `OPENAI_API_KEY` as a hosted secret. Publish with owner-only access; the platform access gate protects the app. Device-local jobs are separate for each browser origin.
